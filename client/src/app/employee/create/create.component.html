@@ -1,0 +1,67 @@
+<div class="card" style="height:40vh; ">
+<form #empForm="ngForm" (ngSubmit)="empForm.valid&&onSubmit()">
+
+    <div class="row">
+    <div class="col-md-4">
+    
+    <label>FirstName</label>
+    <input type="text" name="firstName" required #firstName="ngModel" class="form-control" [(ngModel)]="data.firstName"> 
+    <small class="text-danger" *ngIf="empForm.submitted&&firstName.errors?.required">FirstName required</small>
+</div>
+<div class="col-md-4">
+    <label>LastName</label>
+    <input type="text" name="lastName"  required #lastName="ngModel" class="form-control" [(ngModel)]="data.lastName">
+    <small class="text-danger" *ngIf="empForm.submitted&&lastName.errors?.required">LastName required</small>
+</div>
+
+ <!-- <div class="col-md-4">
+    <label>UserName</label>
+    <input type="text" name="userName" required #userName="ngModel" class="form-control" [(ngModel)]="data.userName">
+    <small class="text-danger" *ngIf="empForm.submitted&&userName.errors?.required">UserName required</small>
+ </div>
+
+  
+     <div class="col-md-4">
+    <label>Password</label>
+    <input type="password" name="passWord" required #passWord="ngModel" class="form-control" [(ngModel)]="data.passWord">
+    <small class="text-danger" *ngIf="empForm.submitted&&passWord.errors?.required">Password required</small>
+   </div>  
+
+<div class="col-md-4">
+    <label>Role</label>
+    <input type="text" name="role" required #role="ngModel" class="form-control" [(ngModel)]="data.role">
+    <small class="text-danger" *ngIf="empForm.submitted&&role.errors?.required">Role required</small>
+</div><div class="col-md-4">
+    <label>office</label>
+    <input type="text" name="office" required #office="ngModel" class="form-control" [(ngModel)]="data.office">
+    <small class="text-danger" *ngIf="empForm.submitted&&office.errors?.required">Office required</small>
+</div><div class="col-md-4">
+    <label>Active</label>
+    <input type="text" name="active" required #active="ngModel" class="form-control" [(ngModel)]="data.active">
+    <small class="text-danger" *ngIf="empForm.submitted&&active.errors?.required">Active required</small>
+</div><div class="col-md-4">
+    <label>Manager Email id</label>
+    <input type="text" class="form-control">
+</div><div class="col-md-4">
+    <label>Exchange User</label>
+    <input type="text" class="form-control">
+</div>  -->
+</div> 
+
+<br>
+<br>
+
+<div style="text-align: center;">
+<button type="submit" class="btn btn-success">Submit</button>
+</div>
+
+
+
+
+</form>
+</div>
+
+
+
+
+

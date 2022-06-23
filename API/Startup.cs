@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using API.Data;
-using API.Interfaces;
-using API.Services;
+// using API.Interfaces;
+ //using API.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -36,7 +36,7 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-           services.AddScoped<ITokenService,TokenService>();
+           //services.AddScoped<ITokenService,TokenService>();
 
             services.AddDbContext<DataContext>(options =>
             {
@@ -46,16 +46,21 @@ namespace API
             services.AddControllers();
 
            services.AddCors();
-           services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-           .AddJwtBearer(options =>{
-               options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
-               {
-                   ValidateIssuerSigningKey = true,
-                   IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["TokenKey"])),
-                   ValidateIssuer =false,
-                   ValidateAudience = false,
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(x =>{
+                 x.TokenValidationParameters = new TokenValidationParameters
+                {
 
-               };
+                   ValidateIssuer =true,
+               ValidateAudience = true,
+              ValidateLifetime = true,
+                  ValidateIssuerSigningKey = true,
+                   ValidIssuer="localhost",
+                  ValidAudience="localhost",
+                   IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["jwtConfig:Key"])),
+                  ClockSkew = TimeSpan.Zero
+
+                };
 
            });
          
@@ -79,10 +84,15 @@ namespace API
             app.UseAuthentication();
 
             app.UseAuthorization();
+         app.UseDefaultFiles();
+             app.UseStaticFiles();
+
+
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                //  endpoints.MapFallbackToController("Index","Fallback");
             });
         }
     }

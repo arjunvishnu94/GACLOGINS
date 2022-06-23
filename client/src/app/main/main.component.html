@@ -1,76 +1,84 @@
 
-<nav class="navbar navbar-expand-md  navbar-dark fixed-top bg-info">
+
+
+ <nav class="navbar navbar-expand-md  navbar-dark fixed-top bg-info">
+
+    <img src="assets\GAClogo.png" id="logo"  >
+
+   <div class="collapse navbar-collapse" id="navbarCollapse">
+     <ul class="navbar-nav mr-auto">
+      <li><a class=" bg-info" >GAClogins</a></li>
+        <li><a routerLink=main class=" bg-info">DashBoard</a></li>
+        <li><a  class=" bg-info">Clearance</a></li>
+        <li><a  class=" bg-info">Report</a></li>
+        
+        <li><a class=" bg-info">Master</a>
     
-    <div class="container"> 
-        <img src="assets\GAClogo.png" id="logo" >
-        <!-- <a class=" bg-info" width="55">GAClogins</a> -->
-                      <!-- <div class  ="container"> -->
-            <!-- <nav > -->
-               
+            <ul>
+                <li><a routerLink="**" class=" bg-info border" style="height: 50px;">Party</a></li>
+                <li><a routerLink="**"class=" bg-info border" style="height: 50px;" >Currency</a></li>
+                <li><a routerLink="**"class=" bg-info border" style="height: 50px;">Department</a></li>
+                <li><a routerLink="**"class=" bg-info border" style="height: 50px;">Location</a></li>
+                <li><a routerLink="**"class=" bg-info border" style="height: 50px;">Country</a></li>
+                <li><a routerLink="**"class=" bg-info border"style="height: 50px;">Events</a></li>
+                <li><a routerLink="**"class=" bg-info border" style="height: 50px;">Email Group</a></li>
+                <li><a routerLink="**"class=" bg-info border" style="height: 50px;">Type of Clearance</a></li>
+            </ul>
+           
+            <li><a class=" bg-info ">Admin</a>
+            
+            <ul>
+                <li><a routerLink="**" class=" bg-info border" style="height: 50px;">Application Control</a></li>
+                <li><a routerLink="**"class=" bg-info border" style="height: 50px;">Application Config</a></li>
+                <li><a routerLink="**"class=" bg-info border" style="height: 50px;">Users</a></li>
+                <li><a routerLink="**"class=" bg-info borderbg-info" style="height: 50px;">Company Master</a></li>
+                <li><a routerLink="**"class=" bg-info border" style="height: 50px;">Approval Matrix</a></li>
+                <li><a routerLink="**"class=" bg-info border" style="height: 50px;">Control Master</a></li>
+     
+       
 
-                
-
-                
-                <ul >
-                    <li><a href="" class=" bg-info">DashBoard</a></li>
-                    <li><a href="" class=" bg-info">Clearance</a></li>
-                    <li><a href="" class=" bg-info">CustomerService</a></li>
-                    <li><a href="" class=" bg-info">Transportation</a></li>
-                    <li><a href="" class=" bg-info">Pricing</a></li>
-                    <li><a href=""class=" bg-info">Master</a></li>
-                    <li><a href=""class=" bg-info">Admin</a>
-                    <!--Fridt Tier Drop Down-->
-                    <ul>
-                        <li><a href="" class=" bg-info">Users</a></li>
-                        <li><a href="" class=" bg-info">CompanyControl</a></li>
-                        <!-- <li><a href=""></a></li>
-                    </ul>
-                    <li><a href=""></a>
-                    
-                        <!--First Tier Drop Down-->
-                        <!-- <ul>
-                            <li><a href=""></a></li>
-                            <li><a href=""></a></li>
-                            <li><a href=""></a>
-                            
-                              
-                                <ul>
-                                    <li><a href=""></a></li>
-                                    <li><a href=""></a></li>
-                                    <li><a href=""></a>
-                                    
-                                       
-                                        <ul>
-                                            <li><a href=""></a></li>
-                             <li><a href="">*</a></li>
-                                            <li><a href=""></a></li>
-                                       
-                                        </ul>
-                                    
-                                    </li>
-                                </ul>
-                            
-                            </li>
-                        </ul>
-                    
-                    </li>
-                    <li><a href=""></a></li>
-                    <li><a href=""></a></li>
-                    <li><a href=""></a></li>
-                    <li><a href=""></a></li> --> 
-               
-        
-                    </ul>
-                </ul>
-            <!-- </nav> -->
-        </div><!--End HTML Code-->
-        
+            </ul>
         
          
+    
+    
+    
+    
+    </ul>
+    
+    
+    
+    
+    
+     <form class="form-inline mt-2 mt-md-0"> 
+   
+
+      <ul *ngIf="loggedin()" class ="dropdown mr-5" dropdown>
+        
+        <a href="#" class="dropdown-toggle bg-info" dropdownToggle (click)="false">
+                                   {{loggedinUser}}</a>
+      
+                                   <div class ="dropdown-menu bg-info" *dropdownMenu>
+                   <a (click)='onLogout()' class="bg-info">
+                                   Logout</a>
+
+
+</div>
+
+
+</ul>
+ 
+    </form> 
+
+  </div>
+
+         
        
-     <!-- </div> -->
+   
      
    </nav>
+
+ 
 
 
 

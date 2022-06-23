@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 
@@ -10,14 +11,27 @@ import { Component, OnInit } from '@angular/core';
 export class MainComponent implements OnInit {
 
 
+  loggedinUser : string;
 
-  constructor() { }
+
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
    
-    
-
   }
+   loggedin() {
+    
+    this.loggedinUser = localStorage.getItem('token')
+    return this.loggedinUser;
+
+   }
+
+   onLogout()
+   {
+     localStorage.removeItem('token');
+     this.router.navigateByUrl('/login');
+
+   }
 
 }
 

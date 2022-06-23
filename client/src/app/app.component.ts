@@ -9,10 +9,19 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'GAClogins';
   users: any;
+
+
+
   constructor(private http : HttpClient) {}
   ngOnInit() {
     this.getUsers();
   }
+
+
+
+
+
+
 
   getUsers() {
 

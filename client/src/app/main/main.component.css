@@ -1,5 +1,5 @@
 html{
-    /* background-image: url(image.jpg); */
+
     height: 700px;
     background-position: center;
     background-size: cover;
@@ -9,8 +9,10 @@ html{
 body{
     font-size: 22px;
     line-height: 32px;
-    /* color: #883232; */
+   
     font-family: 'Open Sans',sans-serif;
+
+   
 }
 nav{
    
@@ -26,41 +28,43 @@ nav ul {
 nav ul li{
    
      display: inline-block; 
-    background-color: #3da0e7;
+    background-color: #0e0f0f;
+    
 }
 nav a{
     
 
-     display: block; 
+     display:block; 
     line-height: 60px;
-    font-size: 15px;
+    font-size: 13px;
     padding: 0 10px;
-    color: #fff;
+    color: rgb(4, 7, 49);
     text-decoration: none;
-   
+
    
     
 }
-/* Hide Dropdown by Default*/
+
 nav ul ul {
     display: none;
     position: absolute;
     top: 60px;
 }
-/* hover */
+
 nav a:hover{
     background-color: #000000;
 }
-/* Display Dropdown on Hover */
+
 nav ul li:hover > ul {
     display: inherit;
 }
-/* Fisrt Tier Dropdown */
+
 nav ul ul li{
-    width: 170px;
+    width: 150px;
     position: relative;
     float: none;
     display: list-item;
+  
 
 }
 
@@ -69,14 +73,14 @@ nav ul ul li{
     float: left;
     width: 60px;
   }
-/* ============ Second, Third and More Tiers ===========*/
+
 nav ul ul ul li {
     position: relative;
     left: 170px;
     top: -60px;
 }
-/* Change this in order to change the Dropdown symbol */
-li > a::after { content: ' +';}
+
+li > a::after { content: ' ';}
 li > a:only-child::after {
     content: '';
 }

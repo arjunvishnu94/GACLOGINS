@@ -1,4 +1,6 @@
+using System.Linq;
 using API.Data;
+using API.DTOs;
 using API.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -9,14 +11,19 @@ namespace API.Controllers
     public class UsersController : BaseApiController
     {
         private readonly DataContext _context;
-        public UsersController(DataContext context)
+        private IConfiguration _config;
+
+        // private IConfiguration _config;
+
+        public UsersController(DataContext context , IConfiguration config)
         {
             _context = context;
+            _config = config;
         }
         [AllowAnonymous]
 
         [HttpGet]
-        public  ActionResult<IEnumerable<AppUser>>GetUsers()
+        public  ActionResult<IEnumerable<User>>GetUsers()
         {
             
 
@@ -26,12 +33,42 @@ namespace API.Controllers
         [Authorize]
 
          [HttpGet("{id}")]
-        public ActionResult<AppUser> GetUsers(int id)
+        public ActionResult<User> GetUsers(int id)
         {
             
 
             return _context.Users.Find(id);
         }
+    
+
+     [AllowAnonymous]
+
+
+   
+
+    [HttpPost("LoginUser")]
+
+    public IActionResult Login(Login user)
+
+    {
+
+       var userAvailable=_context.Users.Where(u=> u.Email == user.Email &&u.Pwd == user.Pwd).FirstOrDefault();
+            
+            if(userAvailable != null)
+            {
+                     return Ok("Sucess");
+
+
+                  
+
+            }
+            
+            return Ok("Failure");
+
+            
+
     }
+     
+ }
 
 }
