@@ -21,6 +21,10 @@ using Microsoft.OpenApi.Models;
 using  System.Data.SqlClient;
 
 namespace API
+
+
+
+
 {
     public class Startup
     {
@@ -46,23 +50,25 @@ namespace API
             services.AddControllers();
 
            services.AddCors();
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddJwtBearer(x =>{
-                 x.TokenValidationParameters = new TokenValidationParameters
-                {
+        //     services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        //     .AddJwtBearer(x =>{
+        //          x.TokenValidationParameters = new TokenValidationParameters
+        //         {
 
-                   ValidateIssuer =true,
-               ValidateAudience = true,
-              ValidateLifetime = true,
-                  ValidateIssuerSigningKey = true,
-                   ValidIssuer="localhost",
-                  ValidAudience="localhost",
-                   IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["jwtConfig:Key"])),
-                  ClockSkew = TimeSpan.Zero
+        //            ValidateIssuer =true,
+        //         ValidateAudience = true,
+        //         ValidateLifetime = true,
+        //         ValidateIssuerSigningKey = true,
+        //         ValidIssuer="localhost",
+        //         ValidAudience="localhost",
+        //            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["jwtConfig:Key"])),
+        //           ClockSkew = TimeSpan.Zero
 
-                };
+                  
 
-           });
+        //         };
+
+        //    });
          
         }
 
@@ -84,15 +90,15 @@ namespace API
             app.UseAuthentication();
 
             app.UseAuthorization();
-         app.UseDefaultFiles();
-             app.UseStaticFiles();
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
 
 
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                //  endpoints.MapFallbackToController("Index","Fallback");
+              // endpoints.MapFallbackToController("Index","Fallback");
             });
         }
     }

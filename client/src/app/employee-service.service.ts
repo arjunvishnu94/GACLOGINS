@@ -8,24 +8,42 @@ export class EmployeeServiceService {
 
   constructor(private http:HttpClient) { }
 
+  baseServerUrl="https://api20220705123849.azurewebsites.net/api/Users";
+  //baseServerUrl="https://localhost:5001/api/Users"
 
-
-getEmployees()
+  getEmployees()
 
 {
+ 
+  return this.http.get<any>(this.baseServerUrl);
+}
 
-return this.http.get<any>('https://localhost:5001/api/Users')
 
+postEmployees(data:any) 
+{
+
+
+  return this.http.post<any>(this.baseServerUrl+'/InsertTableRow',data);
 
 }
 
-postEmployees(data:any) {
 
+getEmployeesById(id:any)
 
-  
-  return this.http.post<any>('https://localhost:5001/api/Users',data)
+{
+   return this.http.get<any>(this.baseServerUrl+`/${id}`);
+}
 
+editEmployees(id:any,data:any)
 
+{
+   return this.http.put<any>(this.baseServerUrl+`/${id}`,data);
+}
+
+deleteEmployees(id:any)
+
+{
+   return this.http.delete<any>(this.baseServerUrl+`/${id}`);
 }
 
 }

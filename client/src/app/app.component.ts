@@ -10,27 +10,23 @@ export class AppComponent implements OnInit {
   title = 'GAClogins';
   users: any;
 
-
-
-  constructor(private http : HttpClient) {}
+ constructor(private http : HttpClient) {}
   ngOnInit() {
     this.getUsers();
   }
 
+    // baseServerUrl="https://localhost:5001/api/users";
+   baseServerUrl="https://api20220705123849.azurewebsites.net/api/";
 
+   getUsers() {
 
-
-
-
-
-  getUsers() {
-
-    this.http.get('https://localhost:5001/api/users').subscribe(response=>{
-
+    this.http.get(this.baseServerUrl).subscribe(response=>{
     this.users=response;
     },error=>{
-      console.log(error);
-    })
-  }
+     console.log(error);
+    
+  })
+  
+}
 
 }

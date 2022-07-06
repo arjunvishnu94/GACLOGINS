@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { EmployeeServiceService } from 'src/app/employee-service.service';
 
@@ -12,46 +12,68 @@ import { EmployeeServiceService } from 'src/app/employee-service.service';
 })
 export class CreateComponent implements OnInit {
 
-  constructor(private empService:EmployeeServiceService , private toast:ToastrService,private router :Router) { }
+  constructor(private empService:EmployeeServiceService , private toast:ToastrService,private router :Router,private route:ActivatedRoute) { }
 
-  data = {
-     firstName:'',
-     lastName:'',
-     userName:'xxxx',
-     passWord:'xx',
-     email:'xxx',
-    pwd:'xx',
-      role:'x',
-      office:'x',
-      active:'x',
-    id:5
+  
+  data= {
+      firstName:'',
+      lastName:'',
+      userName:'',
+      passWord:'',
+      Email:'',
+      pwd:'',
+      role:'',
+      office:'',
+      active:''
+      
+
+    
  }
 
-  ngOnInit(): void {}
+id:any
 
-  onSubmit(){
+ ngOnInit(){
+ this.id=this.route.snapshot.paramMap.get('id');
+ console.log('id is',this.id)
 
+ if(this.id){
+ this.empService.getEmployeesById(this.id).subscribe((res:any) => {
+ console.log({res})
+ this.data=res
+})
+ }
+}
+onSubmit(){
 
-    console.log('clicked',this.data)
+  if(this.id) {
 
-this.empService.postEmployees(this.data).subscribe((res:any) =>{
-
-  console.log({res})
-
- 
-//   this.toast.success('sucessfully added','sucess')
-// if(res.success == 1){
-//   this.router.navigate(['create']);
-// }
- })
-
-
+   this.empService.editEmployees(this.id,this.data).subscribe((res:any)=>{
+   
+     console.log({res})
+     this.toast.success('sucessfully updated','sucess')
+      // if(res.sucess == 1){
+      this.router.navigate(['employee']);
+    //}
+     
+   })
   }
 
+else{
+
+    this.empService.postEmployees(this.data).subscribe((res:any) =>{
+    console.log({res})
+
+ 
+  this.toast.success('sucessfully added','sucess')
+  if(res.sucess == 1) {
+  this.router.navigate(['employee']);
+
+
+ }
+ })
+
 }
-
-
-
-
+}
+}
 
 

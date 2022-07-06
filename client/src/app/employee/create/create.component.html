@@ -14,7 +14,7 @@
     <small class="text-danger" *ngIf="empForm.submitted&&lastName.errors?.required">LastName required</small>
 </div>
 
- <!-- <div class="col-md-4">
+ <div class="col-md-4">
     <label>UserName</label>
     <input type="text" name="userName" required #userName="ngModel" class="form-control" [(ngModel)]="data.userName">
     <small class="text-danger" *ngIf="empForm.submitted&&userName.errors?.required">UserName required</small>
@@ -39,13 +39,16 @@
     <label>Active</label>
     <input type="text" name="active" required #active="ngModel" class="form-control" [(ngModel)]="data.active">
     <small class="text-danger" *ngIf="empForm.submitted&&active.errors?.required">Active required</small>
-</div><div class="col-md-4">
+</div>
+
+ <div class="col-md-4">
     <label>Manager Email id</label>
     <input type="text" class="form-control">
-</div><div class="col-md-4">
+</div>
+<div class="col-md-4">
     <label>Exchange User</label>
     <input type="text" class="form-control">
-</div>  -->
+</div>  
 </div> 
 
 <br>

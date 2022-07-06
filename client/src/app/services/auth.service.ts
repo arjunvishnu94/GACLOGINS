@@ -10,8 +10,8 @@ export class AuthService {
   constructor(private http :HttpClient) { }
 
 
-  baseServerUrl="https://localhost:5001/api/";
-  
+ // baseServerUrl="https://localhost:5001/api/";
+   baseServerUrl="https://api20220705123849.azurewebsites.net/api/";
 
   loginUser(loginInfo:Array<string>){
 

@@ -2,8 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>df45d59e-a13f-4a96-9d8d-c4a815fbae67</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -29,3 +31,5 @@
   </ItemGroup>
 
 </Project>
+
+
